@@ -1,0 +1,240 @@
+<!--/*
+* Source : Vonage
+* Date : 22/03/2021
+* API : 45.00 
+*/ -->
+
+
+<aura:component controller="VonageMessaging" implements="flexiPage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName,lightning:utilityItem">
+    <!-- Invoke Event Subscription  -->
+    <lightning:empApi aura:id="empApi"/>
+    <!--Componnet init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!--AURA ATTRIBUTES START      --> 
+    <aura:attribute name="MessagingHistorycolumns" type="List"/>
+    <aura:attribute name="MessagingHistoryData" type="Object"/>
+    <aura:attribute name="MessagingConversationData" type="VonageMessagingConversation__c"/>
+    <aura:attribute name="today" type="Date" description="To set todays date as mimimum value for Due date and reminder date"/>
+    <aura:attribute name="objMessagingHistory" type="VonageMessagingHistory__c" default="{'sobjectType' : 'VonageMessagingHistory__c'}"/>
+    <aura:attribute name="ShowVideoModal" type="boolean" default="false"/> 
+    <aura:attribute name="ShowMediaModal" type="boolean" default="false"/> 
+    <aura:attribute name="ShowTemplateModal" type="boolean" default="false"/> 
+    <!-- Subscription to Back end VonageMessaging Events  -->
+    <aura:attribute name="subscription" type="Map" />
+    <aura:attribute name="LinkObject" type="Object" />
+    <aura:attribute name="recordLoadError" type="String"/>
+    <aura:attribute name="overrideMessageContent" type="String"/>
+    <aura:attribute name="selectChannel" type="String"/>
+       <force:recordData aura:id="record"
+        recordId="{!v.recordId}"
+        fields="ContactPhone,Contact.Name"
+        targetFields="{!v.LinkObject}"
+        targetError="{!v.recordLoadError}"
+        recordUpdated="{!c.doInit}"
+                   
+   />
+    <!--<aura:handler event="force:refreshView" action="{!c.doInit}" /> --> 
+    <!-- Send Message form-->
+     <lightning:card>
+        <!-- <aura:set attribute="actions">
+            <lightning:buttonicon iconName="utility:chevrondown" alternativeText="down icon" onclick="{!c.toggleForm}"/>
+        </aura:set>-->
+        <div aura:id="formDiv" class="slds-size_1-of-1 slds-p-around_medium">
+        <div class="card card-bordered">                 
+        <div class="publisher bt-1 border-light"> 
+            <img class="avatar avatar-xs" src="https://mdecorny.nexmodemo.com/assets/vonage-v.png" alt="Vonage"/>
+            <lightning:input aura:id="MessageFormContent" class="publisher-input" type="text" placeholder="Write your message here" /> 
+        	<span class="publisher-btn button-paperclip file-group">
+            	<img class="button-icon" src='https://mdecorny.nexmodemo.com/assets/vonageMessagingIcon_paperclip.png' alt="attachement"/>
+              	<input type="file"/> 
+            </span>
+            <span class="publisher-btn text-info" data-abc="true" onclick="{!c.activateTemplateModal}">
+                  <img class="button-icon" src='https://mdecorny.nexmodemo.com/assets/vonageMessagingIcon_list.png' alt="template"/> 
+                  <!--<img class="button-icon" src='https://mdecorny.nexmodemo.com/assets/vonageMessagingIcon_video.png' alt="video"/>--> 
+                </span>
+              <span class="publisher-btn text-info" data-abc="true" onclick="{!c.activateVideoModal}">
+                  <!--<img class="button-icon" src='https://mdecorny.nexmodemo.com/assets/vonageMessagingIcon_list.png' alt="template"/>--> 
+                  <img class="button-icon" src='https://mdecorny.nexmodemo.com/assets/vonageMessagingIcon_video.png' alt="video"/>
+                </span>
+            	<a class="publisher-btn" href="#" data-abc="true">
+                  <img class="button-icon" src='https://mdecorny.nexmodemo.com/assets/vonageMessagingIcon_whatsapp.png' alt="channel"/>
+                </a> 
+              <span class="publisher-btn text-info" data-abc="true" onclick="{!c.saveMessagingHistory}">
+                  <img class="button-icon" src='https://mdecorny.nexmodemo.com/assets/vonageMessagingIcon_send.png' alt="Send" />
+                </span>
+          </div>
+        </div>
+         
+        </div>
+    </lightning:card>
+ 
+    <!--End Send Message-->
+    
+    <!--Chat history-->
+    <div style="clear:left;">
+	<ul id="VMchat">
+    
+    <!-- Iteration of Exchanged messages -->
+    <aura:iteration items="{!v.MessagingHistoryData}" var ="message">
+
+        	<li class="{!'Message'+message.displayDirection}">
+				<div class="entete">
+                    <h3 class="{!'channelImage'+message.displayChannel}"></h3>
+					<h2>{!message.displaySender}</h2>
+					<h3>{!message.displayDateTime}</h3>
+				</div>
+				<div class="triangle"></div>
+				<div class="message">
+					<span><lightning:formattedRichText value="{!message.displayMsgContent}"/></span>
+				</div>
+                <div class="{!'msg'+message.displayState}"></div>
+			</li>
+        
+        
+    </aura:iteration>
+
+		</ul>
+
+    </div>
+    
+  
+    <!--End Chat history-->    
+ 	<!--Live Video Modal -->   
+    <aura:if isTrue="{!v.ShowVideoModal}">  
+        <div class="video" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+
+                        <lightning:buttonIcon iconName="utility:close" variant="bare" onclick="{! c.hideVideoModal }"
+                                              alternativeText="Close" class="slds-modal__close" />
+
+                        <img src="https://mdecorny.nexmodemo.com/assets/vonage-small.png"></img>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium centerThis" id="modal-content-id-1">
+                        <iframe width="400" height="400" style="border: 0px solid" allow="camera;microphone" src="https://mdecorny.nexmodemo.com/nestle/mob/" ></iframe>
+                       <!-- <div id="videos" style="width: 400px;height: 600px;">
+                          <div id="videosubscriber"></div>
+                          <div id="videopublisher"></div> 
+                          
+                      </div>--> 
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <!--<button class="slds-button slds-button_neutral">Cancel</button>-->   
+                        <lightning:button variant="brand" label="Hangup" title="Hangup" onclick="{! c.hideVideoModal }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+      
+    </aura:if>  
+    <!--Live Video Modal -->   
+    
+    <!-- Media Modal -->   
+    <aura:if isTrue="{!v.ShowMediaModal}">  
+        <div class="video" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+
+                        <lightning:buttonIcon iconName="utility:close" variant="bare" onclick="{! c.hideMediaModal }"
+                                              alternativeText="Close" class="slds-modal__close" />
+
+                        <img src="https://mdecorny.nexmodemo.com/assets/vonage-small.png"></img>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium centerThis" id="modal-content-id-1">
+                        <video controls="true" autoplay="autoplay" name="media">
+                            <source src="https://mdecorny.nexmodemo.com/vonagemessaging/archive.mp4" type="video/mp4">
+                            </source>
+                        </video>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <!--<button class="slds-button slds-button_neutral">Cancel</button>-->   
+                        <lightning:button variant="brand" label="Close" title="Close" onclick="{! c.hideMediaModal }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+      
+    </aura:if>  
+    <!--Media Modal --> 
+
+  <!-- Template Modal -->   
+    <aura:if isTrue="{!v.ShowTemplateModal}">  
+        <div class="video" style="height: 640px;">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+
+                        <lightning:buttonIcon iconName="utility:close" variant="bare" onclick="{! c.hideTemplateModal }"
+                                              alternativeText="Close" class="slds-modal__close" />
+						<div class="modalHeaderContainer" style="display:flex;">
+                            <div class="modalHeaderLogo" style=" width: 100px;">
+                            	<img src="https://mdecorny.nexmodemo.com/assets/vonage-v.png"></img>
+                    		</div>
+                            <div class="modalHeadertitle" style="flex-grow: 1;">
+                            	<h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Send a template</h2>
+      						<p class="slds-m-top_x-small">Choose from your predefined templates
+        					</p>
+                    		</div>
+                        </div>
+                        
+                        </header>
+                    <div class="slds-modal__content slds-p-around_medium centerThis" id="modal-content-id-1">
+							<div class="modalTemplateTop" >
+                                <p class="slds-text-heading_medium">Choose your channel</p>
+                                <div class="modalTemplateChannelContainer" style="display:flex;">
+                                	<div class="modalTemplateChannel" style="flex: 1;">
+                                    <img src="https://mdecorny.nexmodemo.com/assets/sms_logo.png"></img>
+                    		    	SMS
+                                    </div>
+                                    <div class="modalTemplateChannel" style="flex: 1;">
+                                    <img src="https://mdecorny.nexmodemo.com/assets/whatsapp_logo.png"></img>
+                    		    	WhatsApp
+                                    </div>
+                                </div>
+                        	</div>
+                        	<div class="modalTemplateMiddleContainer slds-border_top" style="display:flex;">
+                                <div class="modalTemplateMenu" style=" width: 200px;">
+                                    <p class="slds-text-heading_small">Click on the template</p>
+                                    <p onClick="">Welcome</p>
+                                    <p onClick="">Reminder</p>
+                                    <p onClick="">Cancel</p>
+                                    <p onClick="">Reach out</p>
+                                </div>
+                                <div class="modalTemplateParameters" style="flex-grow: 1;">
+                                
+                                    <p class="slds-text-heading_small">Add parameters</p>
+                                    <p>Parameter 1 : <input name="parameter1"></input></p>
+                                    <p>Parameter 2 : <input name="parameter2"></input></p>
+                                        
+                                </div>
+                            </div>
+                            <div class="modalTemplatePreview" style="display:flex;">
+                                 <div class="modalTemplatePreview" style=" width: 600px;">
+                                    <p class="slds-text-heading_medium">Preview</p>
+                                    <textarea id="preview" name="preview" rows="4" cols="50">message to be sent</textarea>
+                                 </div>
+                                <div class="modalTemplatePreviewSend" style="flex-grow: 1; text-align: center;">
+                                 <img src="https://mdecorny.nexmodemo.com/assets/vonageMessagingIcon_send.png"></img>
+                    		    	   
+                                 </div>   
+                                
+                            </div>
+                        </div>
+                    
+                    <footer class="slds-modal__footer">
+                        <!--<button class="slds-button slds-button_neutral">Cancel</button>-->   
+                        <lightning:button variant="brand" label="Close" title="Close" onclick="{! c.hideTemplateModal }"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+      
+    </aura:if>  
+    <!--Template Modal --> 
+    
+</aura:component>

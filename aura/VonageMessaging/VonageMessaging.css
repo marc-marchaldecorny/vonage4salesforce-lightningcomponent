@@ -1,0 +1,243 @@
+.THIS #VMchat{
+	padding-left:0;
+	margin:0;
+	list-style-type:none;
+	overflow-y:scroll;
+	height:535px;
+	border-top:2px solid #fff;
+	border-bottom:2px solid #fff;
+}
+.THIS #VMchat li{
+	padding:10px 30px;
+}
+.THIS #VMchat h2{
+	display:inline-block;
+	font-size:13px;
+	font-weight:normal;
+    padding-left:5px;
+    padding-right:5px;
+}
+.THIS #VMchat h3{
+	display:inline-block;
+	font-size:13px;
+	font-weight:normal;
+    color:#bbb;
+    padding-left:5px;
+    padding-right:5px;
+}
+.THIS #VMchat .entete{
+	margin-bottom:5px;
+}
+.THIS #VMchat .message{
+	padding:10px;
+	color:#fff;
+	line-height:25px;
+	width:80%;
+	display:inline-block;
+	text-align:left;
+	border-radius:5px;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+.THIS #VMchat .MessageIn{
+	text-align:right;
+}
+.THIS #VMchat .MessageOut .message{
+	background-color:#58b666;
+}
+.THIS #VMchat .MessageIn .message{
+	background-color:#6fbced;
+}
+.THIS #VMchat .triangle{
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 10px 10px 10px;
+}
+.THIS #VMchat .MessageOut .triangle{
+		border-color: transparent transparent #58b666 transparent;
+		margin-left:7%;
+}
+.THIS #VMchat .MessageIn .triangle{
+		border-color: transparent transparent #6fbced transparent;
+		margin-left:90%;
+}
+
+.THIS #VMchat .channelImageWhatsapp {
+  display:inline-block;
+  position: relative;
+  height:23px;
+  width:23px;
+  top:5px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' width='25px' height='25px'%3E%3Cpath fill='%23fff' d='M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z'/%3E%3Cpath fill='%23fff' d='M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z'/%3E%3Cpath fill='%23cfd8dc' d='M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z'/%3E%3Cpath fill='%2340c351' d='M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z'/%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.THIS #VMchat .channelImageSms {
+  display:inline-block;
+  position: relative;
+  height:23px;
+  width:25px;
+  top:5px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'%3E%3Cpath d='M2.001 9.352c0 1.873.849 2.943 1.683 3.943.031 1 .085 1.668-.333 3.183 1.748-.558 2.038-.778 3.008-1.374 1 .244 1.474.381 2.611.491-.094.708-.081 1.275.055 2.023-.752-.06-1.528-.178-2.33-.374-1.397.857-4.481 1.725-6.649 2.115.811-1.595 1.708-3.785 1.661-5.312-1.09-1.305-1.705-2.984-1.705-4.695-.001-4.826 4.718-8.352 9.999-8.352 5.237 0 9.977 3.484 9.998 8.318-.644-.175-1.322-.277-2.021-.314-.229-3.34-3.713-6.004-7.977-6.004-4.411 0-8 2.85-8 6.352zm20.883 10.169c-.029 1.001.558 2.435 1.088 3.479-1.419-.258-3.438-.824-4.352-1.385-.772.188-1.514.274-2.213.274-3.865 0-6.498-2.643-6.498-5.442 0-3.174 3.11-5.467 6.546-5.467 3.457 0 6.546 2.309 6.546 5.467 0 1.12-.403 2.221-1.117 3.074zm-7.424-2.429c0-.206-.061-.378-.184-.517-.125-.139-.318-.255-.584-.349-.242-.085-.393-.155-.455-.208-.129-.108-.133-.292.018-.394.075-.051.18-.077.312-.077.217 0 .428.046.627.14l.15-.524c-.221-.1-.475-.149-.768-.149-.336 0-.605.082-.807.244s-.303.37-.303.622c0 .39.273.675.822.858.184.061.311.121.385.179.156.123.146.338-.012.446-.082.056-.195.083-.342.083-.255 0-.504-.062-.752-.188l-.137.542c.244.123.527.184.846.184.371 0 .662-.083.869-.248.211-.164.315-.379.315-.644zm3.656.846l-.154-2.875h-.906l-.613 1.983-.508-1.983h-.895l-.184 2.875h.615l.102-2.321h.008s.352 1.439.59 2.273h.516c.396-1.209.631-1.968.699-2.273h.014c0 .406.021 1.18.067 2.321h.649zm2.451-.846c0-.209-.064-.386-.189-.527-.124-.14-.322-.259-.59-.353-.237-.084-.389-.154-.449-.205-.123-.103-.125-.273.016-.369.072-.049.176-.074.305-.074.232 0 .435.052.637.147l.158-.556-.012-.006c-.221-.1-.48-.15-.774-.15-.338 0-.612.083-.815.248-.205.165-.311.379-.311.634 0 .396.281.688.836.872.179.061.306.12.379.177.146.115.14.318-.012.42-.078.054-.19.081-.333.081-.274 0-.521-.072-.761-.195l-.145.574c.273.136.559.19.863.19.374 0 .67-.084.879-.251.211-.167.318-.388.318-.657z'/%3E%3C/svg%3E");
+
+}
+
+.THIS #VMchat .msgSent {
+  display:inline-block;
+  position: relative;
+  margin-left:5px;
+  height:16px;
+  width:16px;
+  right:12px;
+  top:30px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath style='line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal' d='M 14.5 2.7929688 L 14.146484 3.1464844 L 5.5 11.792969 L 1.8535156 8.1464844 L 1.5 7.7929688 L 0.79296875 8.5 L 1.1464844 8.8535156 L 5.5 13.207031 L 14.853516 3.8535156 L 15.207031 3.5 L 14.5 2.7929688 z' font-weight='400' font-family='sans-serif' white-space='normal' overflow='visible'/%3E%3C/svg%3E%0A");
+
+}
+
+.THIS #VMchat .msgDelivered {
+  display:inline-block;
+  position: relative;
+  margin-left:5px;
+  height:16px;
+  width:16px;
+  right:12px;
+  top:30px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath style='line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal' d='M 12.271484 3.0214844 L 6 9.2929688 L 3.7285156 7.0214844 L 3.0214844 7.7285156 L 5.2929688 10 L 4.5 10.792969 L 0.72851562 7.0214844 L 0.021484375 7.7285156 L 4.5 12.207031 L 6 10.707031 L 7.5 12.207031 L 15.978516 3.7285156 L 15.271484 3.0214844 L 7.5 10.792969 L 6.7070312 10 L 12.978516 3.7285156 L 12.271484 3.0214844 z' color='%23000' font-weight='400' font-family='sans-serif' white-space='normal' overflow='visible'/%3E%3C/svg%3E%0A");  
+}
+
+.THIS #VMchat .msgRead {
+  display:inline-block;
+  position: relative;
+  margin-left:5px;
+  height:16px;
+  width:16px;
+  right:12px;
+  top:30px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%230079fe' style='line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:%23fff;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal' d='M 12.271484 3.0214844 L 6 9.2929688 L 3.7285156 7.0214844 L 3.0214844 7.7285156 L 5.2929688 10 L 4.5 10.792969 L 0.72851562 7.0214844 L 0.021484375 7.7285156 L 4.5 12.207031 L 6 10.707031 L 7.5 12.207031 L 15.978516 3.7285156 L 15.271484 3.0214844 L 7.5 10.792969 L 6.7070312 10 L 12.978516 3.7285156 L 12.271484 3.0214844 z' color='%23fff' font-weight='400' font-family='sans-serif' white-space='normal' overflow='visible'/%3E%3C/svg%3E");
+
+}
+
+.THIS #VMchat .msgError {
+  display:inline-block;
+  position: relative;
+  margin-left:5px;
+  height:16px;
+  width:20px;
+  right:10px;
+  top:25px;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.2' baseProfile='tiny' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='20px' height='16px' viewBox='0 0 20 16' xml:space='preserve'%3E%3Cpath fill='%23D61F33' d='M10,0L0,16h20L10,0z M11,13.908H9v-2h2V13.908z M9,10.908v-6h2v6H9z'/%3E%3C/svg%3E%0A");
+
+}
+
+.THIS .card-bordered {
+    border: 3px solid #ebebeb
+}
+
+.THIS .card {
+    border: 0;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    -webkit-transition: .5s;
+    transition: .5s
+}
+
+
+.THIS .publisher {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #f9fafb
+}
+
+.THIS .publisher>*:first-child {
+    margin-left: 0
+}
+
+.THIS .publisher>* {
+    margin: 0 5px
+}
+
+.THIS .publisher-input {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border: none;
+    outline: none !important;
+    background-color: transparent
+}
+
+
+.THIS .publisher-btn {
+    background-color: transparent;
+    border: none;
+    color: #8b95a5;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: -moz-hidden-unscrollable;
+    -webkit-transition: .2s linear;
+    transition: .2s linear
+}
+
+.THIS .file-group {
+    position: relative;
+    overflow: hidden
+}
+
+.THIS .publisher-btn {
+    background-color: transparent;
+    border: none;
+    color: #cac7c7;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: -moz-hidden-unscrollable;
+    -webkit-transition: .2s linear;
+    transition: .2s linear
+}
+
+.THIS .file-group input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    width: 20px
+}
+
+.THIS .text-info {
+    color: #48b0f7 !important
+}
+
+.THIS .button-icon {
+  width: 25px;
+  height: 25px ;
+}
+
+.THIS .videosubscriber {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.THIS .videopublisher {
+    position: absolute;
+    width: 150px;
+    height: 100px;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100;
+    border: 3px solid white;
+    border-radius: 3px;
+}
+
+.THIS .centerThis {
+    text-align:center;
+}

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Vonage API Configuration for Vonage SMS notification and</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>API_Key__c</fullName>
+        <description>Vonage API Key</description>
+        <externalId>false</externalId>
+        <inlineHelpText>you can find them here https://dashboard.nexmo.com/settings</inlineHelpText>
+        <label>API_Key</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>API_Secret__c</fullName>
+        <description>Vonage API Secret</description>
+        <externalId>false</externalId>
+        <inlineHelpText>you can find them here https://dashboard.nexmo.com/settings</inlineHelpText>
+        <label>API_Secret</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MESSAGES_API_SANDBOX_URL__c</fullName>
+        <defaultValue>(&quot;https://messages-sandbox.nexmo.com/v1/messages&quot;)</defaultValue>
+        <description>Messages API Sandbox endptoint. This can be found in the dashboard https://dashboard.nexmo.com.
+It is usually set to : https://messages-sandbox.nexmo.com/v1/messages</description>
+        <externalId>false</externalId>
+        <label>MESSAGES_API_SANDBOX_URL</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MESSAGES_VONAGE_URL__c</fullName>
+        <defaultValue>(&quot;https://api.nexmo.com/v1/messages&quot;)</defaultValue>
+        <description>Messages API URL default is https://api.nexmo.com/v1/messages</description>
+        <externalId>false</externalId>
+        <label>MESSAGES_VONAGE_URL</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SMS_LVN__c</fullName>
+        <description>SMS LVN</description>
+        <externalId>false</externalId>
+        <inlineHelpText>can be ordered in the dashboard : https://dashboard.nexmo.com/your-numbers</inlineHelpText>
+        <label>SMS_LVN</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SMS_VONAGE_URL__c</fullName>
+        <defaultValue>(&quot;https://rest.nexmo.com/sms/json&quot;)</defaultValue>
+        <description>SMS API : default https://rest.nexmo.com/sms/json
+Regional endpoints can also be used</description>
+        <externalId>false</externalId>
+        <label>SMS_VONAGE_URL</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>USE_MESSAGES_API_FOR_SMS__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Use Messages API for SMS as opposed to SMS API. allows for simple 2 way interactions over SMS
+select Message API under API Key configuration : https://dashboard.nexmo.com/settings</description>
+        <externalId>false</externalId>
+        <label>USE_MESSAGES_API_FOR_SMS</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>USE_SANDBOX_FOR_MESSAGES_API__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Tick to use the Messages API Sandbox for testing WhatsApp</description>
+        <externalId>false</externalId>
+        <label>USE_SANDBOX_FOR_MESSAGES_API</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>WHATSAPP_LVN__c</fullName>
+        <description>WhatsApp LVN for Vonage API. can be found here : https://dashboard.nexmo.com/messages/social-channels
+You can also use the sandbox WhatsApp number</description>
+        <externalId>false</externalId>
+        <label>WHATSAPP_LVN</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Vonage API Configuration</label>
+    <visibility>Public</visibility>
+</CustomObject>
